@@ -29,7 +29,7 @@ fpm:
     ports:
         - "9000:9000"
     volumes:
-        - ./app:/var/www
+        - ./app:/var/www/html
         - ./php-config:/etc/php5/fpm
         - ./php-fpm-config:/etc/init.d
     links:
