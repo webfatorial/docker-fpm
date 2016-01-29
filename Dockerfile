@@ -35,6 +35,7 @@ RUN wget http://static.jonof.id.au/dl/kenutils/pngout-20130221-linux.tar.gz \
     && mv pngout-20130221-linux/x86_64/pngout /usr/bin \
     && rm -rf pngout-20130221-linux
 
+VOLUME /var/www/html
 WORKDIR /var/www/html
 
 RUN sed -i -e 's/^UMASK *[0-9]*.*/UMASK    002/' /etc/login.defs
