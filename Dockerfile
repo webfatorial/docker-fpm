@@ -35,7 +35,6 @@ RUN wget http://static.jonof.id.au/dl/kenutils/pngout-20130221-linux.tar.gz \
     && mv pngout-20130221-linux/x86_64/pngout /usr/bin \
     && rm -rf pngout-20130221-linux
 
-VOLUME /var/www/html
 WORKDIR /var/www/html
 
 RUN getent group www-data || groupadd www-data -g 33
@@ -46,5 +45,7 @@ RUN usermod -G staff www-data
 
 RUN chown -R www-data:www-data /var/www/html
 RUN chmod -R 775 /var/www/html
+
+VOLUME /var/www/html
 
 CMD php-fpm
