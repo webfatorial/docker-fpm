@@ -7,6 +7,8 @@ chown www-data:www-data .
 find . -type f -exec chmod 664 {} +
 find . -type d -exec chmod 775 {} +
 
+su www-data
+
 umask 0002
 
 exec "$@"

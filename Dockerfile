@@ -2,6 +2,8 @@ FROM php:fpm
 
 MAINTAINER webfatorial <webfatorial@webfatorial.com>
 
+ADD etc /etc
+
 RUN apt-get update
 RUN apt-get -y install wget
 RUN apt-get -y install libpcre3-dev
@@ -28,8 +30,6 @@ RUN pecl install apcu
 
 RUN docker-php-ext-enable apcu
 
-ADD etc /etc
-
 RUN wget http://static.jonof.id.au/dl/kenutils/pngout-20130221-linux.tar.gz \
     && tar xvf pngout-20130221-linux.tar.gz \
     && mv pngout-20130221-linux/x86_64/pngout /usr/bin \
@@ -45,6 +45,7 @@ RUN id -u www-data &>/dev/null || useradd -u 1000  --no-create-home --system --n
 
 RUN usermod -u 1000 www-data
 RUN usermod -G staff www-data
+RUN usermod -G users www-data
 
 RUN chown -R www-data:www-data /var/www/html
 RUN chmod -R 775 /var/www/html
