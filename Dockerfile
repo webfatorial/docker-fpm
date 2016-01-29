@@ -33,7 +33,7 @@ RUN docker-php-ext-enable apcu
 RUN wget http://static.jonof.id.au/dl/kenutils/pngout-20130221-linux.tar.gz \
     && tar xvf pngout-20130221-linux.tar.gz \
     && mv pngout-20130221-linux/x86_64/pngout /usr/bin \
-    && rm -rf pngout-20130221-linux
+    && rm -rf pngout-20130221-linux.tar.gz
 
 WORKDIR /var/www/html
 
