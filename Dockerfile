@@ -20,6 +20,13 @@ RUN apt-get -y install php5-mcrypt
 RUN apt-get -y install php5-mysql
 RUN apt-get -y install pngquant
 RUN apt-get -y install sendmail
+RUN apt-get -y install tzdata
+
+ENV TIMEZONE=America/Los_Angeles
+
+RUN ln -snf /usr/share/zoneinfo/$TIMEZONE /etc/localtime
+RUN echo $TIMEZONE > /etc/timezone
+RUN dpkg-reconfigure --frontend noninteractive tzdata
 
 RUN rm -rf /var/lib/apt/lists/*
 
@@ -47,6 +54,7 @@ RUN usermod -G staff www-data
 RUN chown -R www-data:www-data /var/www/html
 RUN chmod -R 775 /var/www/html
 
+VOLUME /etc/timezone
 VOLUME /var/www/html
 
 CMD php-fpm
