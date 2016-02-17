@@ -22,12 +22,6 @@ RUN apt-get -y install pngquant
 RUN apt-get -y install sendmail
 RUN apt-get -y install tzdata
 
-ENV TIMEZONE=America/Los_Angeles
-
-RUN ln -snf /usr/share/zoneinfo/$TIMEZONE /etc/localtime
-RUN echo $TIMEZONE > /etc/timezone
-RUN dpkg-reconfigure --frontend noninteractive tzdata
-
 RUN rm -rf /var/lib/apt/lists/*
 
 RUN docker-php-ext-install gd
@@ -54,6 +48,17 @@ RUN usermod -G staff www-data
 RUN chown -R www-data:www-data /var/www/html
 RUN chmod -R 775 /var/www/html
 
+COPY docker-entrypoint.sh /entrypoint.sh
+
+RUN chmod +x /entrypoint.sh
+
 VOLUME /var/www/html
+
+ENV LOCALE en_US.UTF-8
+ENV TIMEZONE America/Los_Angeles
+
+RUN ls
+
+ENTRYPOINT /entrypoint.sh
 
 CMD php-fpm
