@@ -25,6 +25,7 @@ RUN apt-get -y install tzdata
 RUN rm -rf /var/lib/apt/lists/*
 
 RUN docker-php-ext-install gd
+RUN docker-php-ext-install mbstring
 RUN docker-php-ext-install mcrypt
 RUN docker-php-ext-install mysqli
 
