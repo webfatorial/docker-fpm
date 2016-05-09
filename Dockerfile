@@ -2,7 +2,8 @@ FROM php:fpm
 
 MAINTAINER webfatorial <webfatorial@webfatorial.com>
 
-ADD etc /etc
+COPY etc/init.d /etc/init.d
+COPY usr/local/etc/php /usr/local/etc/php
 
 RUN apt-get update
 RUN apt-get -y install wget
@@ -60,6 +61,6 @@ ENV TIMEZONE America/Los_Angeles
 
 RUN ls
 
-ENTRYPOINT /entrypoint.sh
+ENTRYPOINT [/entrypoint.sh]
 
-CMD php-fpm
+CMD [php-fpm]
