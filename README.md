@@ -5,20 +5,18 @@ This fpm is configured to execute with user/group www-data
 
 ## PHP Modules
 
-* apcu
-* gd
-* mcrypt
-* mysqli
+    * gd
+    * mcrypt
+    * mysqli
 
 ## Extras
 
-* libfreetype6-dev
-* libjpeg-progs
-* libjpeg62-turbo-dev
-* libmagickwand-dev
-* libpng12-dev
-* pngout
-* sendmail
+    * libfreetype6-dev
+    * libjpeg-progs
+    * libjpeg62-turbo-dev
+    * libmagickwand-dev
+    * libpng12-dev
+    * pngout
 
 ## Docker Compose example
 
