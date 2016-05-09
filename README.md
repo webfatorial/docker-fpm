@@ -28,8 +28,8 @@ fpm:
         - "9000:9000"
     volumes:
         - ./app:/var/www/html
-        - ./php-config:/etc/php5/fpm
-        - ./php-fpm-config:/etc/init.d
+        - ./etc/init.d:/etc/init.d
+        - ./usr/local/etc/php:/usr/local/etc/php
     links:
         - mysql
 ```

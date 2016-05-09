@@ -20,7 +20,6 @@ RUN apt-get -y install php5-gd
 RUN apt-get -y install php5-mcrypt
 RUN apt-get -y install php5-mysql
 RUN apt-get -y install pngquant
-RUN apt-get -y install sendmail
 RUN apt-get -y install tzdata
 
 RUN rm -rf /var/lib/apt/lists/*
@@ -29,10 +28,6 @@ RUN docker-php-ext-install gd
 RUN docker-php-ext-install mbstring
 RUN docker-php-ext-install mcrypt
 RUN docker-php-ext-install mysqli
-
-RUN pecl install apcu
-
-RUN docker-php-ext-enable apcu
 
 RUN wget http://static.jonof.id.au/dl/kenutils/pngout-20130221-linux.tar.gz \
     && tar xvf pngout-20130221-linux.tar.gz \
