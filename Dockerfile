@@ -56,6 +56,6 @@ ENV TIMEZONE America/Los_Angeles
 
 RUN ls
 
-ENTRYPOINT [/entrypoint.sh]
+ENTRYPOINT /entrypoint.sh
 
-CMD [php-fpm]
+CMD php-fpm
