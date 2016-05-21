@@ -13,7 +13,6 @@ RUN apt-get -y install libfreetype6-dev
 RUN apt-get -y install libjpeg62-turbo-dev
 RUN apt-get -y install libjpeg-dev
 RUN apt-get -y install libpng12-dev
-RUN apt-get -y install libmagickwand-dev
 RUN apt-get -y install locales
 RUN apt-get -y install php5-common
 RUN apt-get -y install php5-gd
@@ -23,6 +22,8 @@ RUN apt-get -y install pngquant
 RUN apt-get -y install tzdata
 
 RUN rm -rf /var/lib/apt/lists/*
+
+RUN docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr
 
 RUN docker-php-ext-install gd
 RUN docker-php-ext-install mbstring
