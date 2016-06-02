@@ -7,18 +7,7 @@ COPY usr/local/etc/php /usr/local/etc/php
 
 RUN apt-get update
 RUN apt-get -y install wget
-RUN apt-get -y install libpcre3-dev
-RUN apt-get -y install libmcrypt-dev
-RUN apt-get -y install libfreetype6-dev
-RUN apt-get -y install libjpeg62-turbo-dev
-RUN apt-get -y install libjpeg-dev
-RUN apt-get -y install libpng12-dev
 RUN apt-get -y install locales
-RUN apt-get -y install php5-common
-RUN apt-get -y install php5-gd
-RUN apt-get -y install php5-mcrypt
-RUN apt-get -y install php5-mysql
-RUN apt-get -y install pngquant
 RUN apt-get -y install tzdata
 
 RUN rm -rf /var/lib/apt/lists/*
@@ -33,11 +22,6 @@ RUN docker-php-ext-install mysqli
 RUN docker-php-ext-install opcache
 RUN docker-php-ext-install pdo
 RUN docker-php-ext-install pdo_mysql
-
-RUN wget http://static.jonof.id.au/dl/kenutils/pngout-20130221-linux.tar.gz \
-    && tar xvf pngout-20130221-linux.tar.gz \
-    && mv pngout-20130221-linux/x86_64/pngout /usr/bin \
-    && rm -rf pngout-20130221-linux.tar.gz
 
 WORKDIR /var/www/html
 
