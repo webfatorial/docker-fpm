@@ -31,6 +31,8 @@ RUN docker-php-ext-install mbstring
 RUN docker-php-ext-install mcrypt
 RUN docker-php-ext-install mysqli
 RUN docker-php-ext-install opcache
+RUN docker-php-ext-install pdo
+RUN docker-php-ext-install pdo_mysql
 
 RUN wget http://static.jonof.id.au/dl/kenutils/pngout-20130221-linux.tar.gz \
     && tar xvf pngout-20130221-linux.tar.gz \
