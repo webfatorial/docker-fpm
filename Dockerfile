@@ -24,11 +24,13 @@ RUN apt-get -y install tzdata
 RUN rm -rf /var/lib/apt/lists/*
 
 RUN docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr
+RUN docker-php-ext-configure opcache --enable-opcache
 
 RUN docker-php-ext-install gd
 RUN docker-php-ext-install mbstring
 RUN docker-php-ext-install mcrypt
 RUN docker-php-ext-install mysqli
+RUN docker-php-ext-install opcache
 
 RUN wget http://static.jonof.id.au/dl/kenutils/pngout-20130221-linux.tar.gz \
     && tar xvf pngout-20130221-linux.tar.gz \
@@ -46,6 +48,7 @@ RUN usermod -G staff www-data
 RUN chown -R www-data:www-data /var/www/html
 RUN chmod -R 775 /var/www/html
 
+COPY config/opcache.ini $PHP_INI_DIR/conf.d/
 COPY docker-entrypoint.sh /entrypoint.sh
 
 RUN chmod +x /entrypoint.sh
